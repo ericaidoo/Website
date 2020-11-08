@@ -1,0 +1,36 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Home Page</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="main.js"></script>
+	</head>
+	<body>
+		<header>
+		<h1>Secure Page</h1>
+		<a href="/logout">Log out</a>
+		</header>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+		<main>
+    <table>
+    <tr><th>ItemID</th><th>Name</th><th>Price</th></tr>
+    {{#each records}}
+      <tr>
+        <td>{{this.userid}}</td>
+        <td>{{this.itemName}}</td>
+        <td>{{this.itemPrice}}</td>
+      </tr>
+    {{/each}}
+</table>
+		</main>
+	</body>
+</html>

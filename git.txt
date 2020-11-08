@@ -1,0 +1,3 @@
+when you finish project part;
+
+1. create branch     (git branch )
