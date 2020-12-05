@@ -4,7 +4,6 @@ import bodyParser from 'koa-body'
 
 const router = new Router()
 router.use(bodyParser({multipart: true}))
-
 import Accounts from '../modules/accounts.js'
 const dbName = 'website.db'
 
@@ -67,7 +66,7 @@ router.post('/login', async ctx => {
 	ctx.hbs.body = ctx.request.body
 	try {
 		const body = ctx.request.body
-		await account.login(body.user, body.pass)
+	  await account.login(body.user, body.pass)
 		ctx.session.authorised = true
 		const referrer = body.referrer || '/sv'
 		return ctx.redirect(`${referrer}?msg=you are now logged in...`)
@@ -80,6 +79,7 @@ router.post('/login', async ctx => {
 })
 
 router.get('/logout', async ctx => {
+   
 	ctx.session.authorised = null
 	ctx.redirect('/?msg=you are now logged out')
 })

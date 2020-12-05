@@ -15,7 +15,7 @@ class Accounts {
    * Create an account object
    * @param {String} [dbName=":memory:"] - The name of the database file to use.
    */
-	constructor(dbName = ':memory:') {
+	constructor(dbName = ':account.sql:') {
 		return (async() => {
 			this.db = await sqlite.open(dbName)
 			// we need this table to store the user accounts
@@ -59,7 +59,7 @@ class Accounts {
 		let sql = `SELECT count(id) AS count FROM users WHERE user="${username}";`
 		const records = await this.db.get(sql)
 		if(!records.count) throw new Error(`username "${username}" not found`)
-		sql = `SELECT pass FROM users WHERE user = "${username}";`
+		sql = `SELECT id, pass FROM users WHERE user = "${username}";`
 		const record = await this.db.get(sql)
 		const valid = await bcrypt.compare(password, record.pass)
 		if(valid === false) throw new Error(`invalid password for account "${username}"`)

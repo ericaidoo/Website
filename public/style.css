@@ -21,7 +21,7 @@ aside {
 }
 
 header {
-	background-color: #ccc;
+	background-color: #621940;
 	border-bottom: 5px solid grey;
 	height: 8vw;
 }
@@ -29,7 +29,7 @@ header {
 h1, h2, h3 {
 	margin: 0;
 	padding: 0;
-	color: #444;
+	color: #CCC;
 }
 
 h1 {
@@ -71,12 +71,14 @@ p, legend {
 }
 
 main {
-	width: 800%;
+	width: 100%;
 	margin: auto;
   margin-top: 2em;
   padding: 2em;
   box-sizing:border-box;
-  background-color: lightsalmon;
+  background-color: #621940;
+  color: #f10080;
+  
 }
 
 article {
@@ -130,9 +132,9 @@ small {
 
 fieldset {
 	position: relative;
-	width: 25vw;
+	width: 15vw;
 	border: 1px solid #CCC;
-	padding-top: 4vw;
+	padding-top: 2vw;
 }
 
 legend {
@@ -226,12 +228,14 @@ tr:nth-child(odd) {
 	background: #DDD;
 }
 
-td {
+td, th {
 	/* border: 1px solid grey; */
 	padding: 0.5vw;
 	font-size: 1.5vw;
+  width: 25vw;
 }
 
-td:last-child th:last-child {
+td:last-child, th:last-child {
+  width: 10vw
 	text-align: right;
 }

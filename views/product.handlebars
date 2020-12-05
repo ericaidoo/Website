@@ -4,7 +4,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>SV - Items</title>
+		<title>SV - Products</title>
 		<meta name="description" content="form to add new books">
 		<meta name="author" content="Mark Tyers">
 		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header>
-		<h1>Stock Inventory</h1>
+		<h1>Products</h1>
 		<a href="/logout">Log out</a>
 		</header>
     
@@ -22,30 +22,15 @@
 			</aside>
 		{{/if}}
 		<main>
-  
-<!--       
-    <label for="product_id">product ID:</label>
-    <input type="text" id="pin" name="pin" maxlength="4" size="4"><br><br>
-        <button onclick="document.getElementById('form-id').submit();">submit</button> -->
-      
     	<form action="/sv" enctype="multipart/form-data" method="post">
 			<p>
 				<label for="item">Item ID: </label><br />
 				<input type="number" name="itemID" value="">
-			</p>
-			
-			<p align="left">
-        <input type="submit" value="Submit"/>
-      </p>
 		</form> 
-      
-      
       <div>
         <p>SHOPPING LIST : </p>
         
 <table>
-  
-        
          {{#each all}}
       <tr>
         <td> {{this.name}}</td>
@@ -55,16 +40,9 @@
 </table>
        
      <p>Total : {{total}}</p>
-        
-      <p align="right">
-        <input type="submit" value="Next"/>
-        <input type="submit" value="Cancel"/>
-      </p>
-     
       </div>
       
 		</main>
-      
-        <a class="add" herf="/sv/add">Products</a>
+     <a class="add" herf="/sv/add">Add Product</a>
     </body>
 </html>
