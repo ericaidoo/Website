@@ -14,57 +14,45 @@
 		<header>
 		<h1>Stock Inventory</h1>
 		<a href="/logout">Log out</a>
-		</header>
-    
+    </header>
 		{{#if msg}}
  			<aside>
 				<p class="msg">{{msg}}</p>
 			</aside>
 		{{/if}}
 		<main>
-  
-<!--       
-    <label for="product_id">product ID:</label>
-    <input type="text" id="pin" name="pin" maxlength="4" size="4"><br><br>
-        <button onclick="document.getElementById('form-id').submit();">submit</button> -->
+      
       
     	<form action="/sv" enctype="multipart/form-data" method="post">
 			<p>
 				<label for="item">Item ID: </label><br />
 				<input type="number" name="itemID" value="">
 			</p>
-			
 			<p align="left">
         <input type="submit" value="Submit"/>
       </p>
+      <p align="right">
+        <input type="submit" value="Next"/>
+        <input type="submit" value="Back"/>
+      </p>
 		</form> 
       
+       <a href="/sv/clear">Clear</a>
       
       <div>
-        <p>SHOPPING LIST : </p>
-        
+        <p>SHOPPING LIST : </p> 
 <table>
-  
-        
-         {{#each all}}
+    {{#each all}}
       <tr>
         <td> {{this.name}}</td>
         <td> {{this.price}}</td>
+        <td>{{this.qty}}</td>
        </tr> 
-      {{/each}}
-</table>
-       
+    {{/each}}
+</table>  
      <p>Total : {{total}}</p>
-        
-      <p align="right">
-        <input type="submit" value="Next"/>
-        <input type="submit" value="Cancel"/>
-      </p>
-     
       </div>
-      
 		</main>
-      
-        <a class="add" herf="/sv/add">Products</a>
+        <a  href="/sv/add">Add Items</a>
     </body>
 </html>

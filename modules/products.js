@@ -27,7 +27,8 @@ class Items {
           const sql2 = 'CREATE TABLE IF NOT EXISTS cart(\
                  item_id INTEGER,\
                  name TEXT,\
-                 price INTEGER\
+                 price INTEGER,\
+                 qty INTEGER\
       );'
       await this.db.run(sql)
       await this.db.run(sql2)
@@ -89,11 +90,49 @@ class Items {
 
       
       
-    
       
-      let sql2 = `INSERT INTO cart(item_id, name,price) VALUES(${info.itemID},"${all.name}", "${all.price}")`
       
-		  await this.db.run(sql2)
+//       let sql2 = `INSERT INTO cart(item_id, name,price,qty) VALUES(${info.itemID},"${all.name}", ${all.price},1)`
+
+// 		  await this.db.run(sql2)
+      
+      let sql4 = `SELECT COUNT(item_id) as records FROM cart WHERE item_id= ${info.itemID};`
+      const data2 = await this.db.get(sql4)
+      
+     if(data2.records === 0) {
+      let sql2 = `INSERT INTO cart(item_id, name,price,qty) VALUES(${info.itemID},"${all.name}", ${all.price},1)`
+		  await this.db.run(sql2)     
+     }
+      
+      else{
+        let sql3 = `SELECT qty FROM cart WHERE item_id = ${info.itemID};`
+        const qty = await this.db.get(sql3)
+        console.log("QUANITYTY HEREEEEE")
+        console.log(qty['qty'])
+        const add = qty['qty'] + 1
+        
+        let sql5 = `UPDATE cart SET qty = ${add} WHERE item_id = ${info.itemID};`
+        await this.db.run(sql5)
+        
+        let sql6 = 'SELECT * FROM cart'
+        const cart = await this.db.run(sql6)
+        
+      console.log("CART QUANITY HERE")
+      console.log(cart)
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
    
     }catch(err){
       console.log("check error")
@@ -108,13 +147,10 @@ class Items {
     
     
     
-    
-
-  
   
   async cart(){
     try{
-       const sql = `SELECT item_id,name,price FROM cart;`
+       const sql = `SELECT item_id,name,price,qty FROM cart;`
     
         const cart = await this.db.all(sql)
         return cart
@@ -131,25 +167,23 @@ class Items {
     let total = 0
     
     try{
-      
        const sql = `SELECT price FROM cart;`
-    
         const allPrices = await this.db.all(sql)
-        
-        
-        
+         
       for (let i = 0; i < allPrices.length; i++) {
             total = total + allPrices[i]
            
 }
-      console.log(total)
+//      console.log(total)
 //         for(let price of allPrices){
 //           console.log(`PRICES ARE : ${allPrices[price]}`)
 // //           total = total + price
-//         }
+         
       total = 0
-        return total
+      return total
       
+    
+  
     }catch(err){
          console.log("CART function")
       console.log(err.message)
@@ -157,6 +191,41 @@ class Items {
     }
     
   }
+  
+ 
+  
+//    const sql = 'CREATE TABLE IF NOT EXISTS items(\
+//                  item_id INTEGER PRIMARY KEY AUTOINCREMENT,\
+//                  name TEXT,\
+//                  price INTEGER,\
+//                  qty INTEGER\
+//       );'
+
+  	async addItem(data) {
+      console.log("ADDitems Function")
+      console.log(data.itemName)
+//       for(const item in data){
+//         if item[0]
+//       }
+// 		Array.from(arguments).forEach( val => {
+// 			if(val.length === 0) throw new Error('missing field')
+// 		})
+       
+      try{
+    let sql = `SELECT COUNT(item_id) as records FROM items WHERE item_id="${data.itemid}";`
+		const data2 = await this.db.get(sql)
+		if(data2.records !== 0) throw new Error(`item "${user}" already exists`)
+      
+		sql = `INSERT INTO items(name, price,qty) VALUES("${data.itemName}", ${data.itemPrice}, ${data.itemQty})`
+		await this.db.run(sql)
+		return true
+      }catch(err){
+        console.log(err.message)
+      }
+      
+		
+	}
+
   
    async dropCart(){
     try{

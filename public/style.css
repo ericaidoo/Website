@@ -151,7 +151,7 @@ input[type="file"] {
 	display: none;
 }
 
-input[type="submit"], header > a, .custom-file-upload {
+input[type="submit"], header > a, a .custom-file-upload {
   background-color: grey;
   border: 2px solid grey;
   color: white;
@@ -166,6 +166,23 @@ input[type="submit"], header > a, .custom-file-upload {
 input[type="submit"]:hover, header > a:hover, .custom-file-upload:hover {
   color: grey;
   background-color: white;
+}
+
+a {
+  background-color: #15c42f;
+  border: 2px solid #cefff8;
+  color: white;
+	padding: 0.4vw 0.8vw;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+	font-size: 1.5vw;
+	/* border-radius: 0.6vw; */
+}
+
+a:hover{
+  color: grey;
+  background-color: #c8f418;
 }
 
 input[type="text"], input[type="email"], input[type="password"], textarea, select {

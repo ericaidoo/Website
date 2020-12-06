@@ -1,0 +1,65 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SV - New Items</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="main.js"></script>
+	</head>
+	<body>
+		<header>
+		<h1>Add New Items</h1>
+		<a href="/logout">Log out</a>
+		</header>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+		<main>
+      <form method="post" action="/sv/add" enctype="multipart/form-data">
+        <p>
+          <lable for="eannumber">EAN number</lable><br />
+<!--           <input type="number" name="itemid" placeholder="barcode" value="" autofocus required /> -->
+        </p>
+        <p>
+          <lable for="name">Name</lable><br />
+          <input type="text" name="itemName" placeholder="item name" value="" required />
+        </p>
+        <p>
+          <lable for="product">Product Description</lable><br />
+<!--           <input type="text" name="product" placeholder="product description" value="" required /> -->
+        </p>
+        <p>
+          <lable for="avatar">Product picture</lable><br />
+<!--           <input type="text" name="avatar" accept="image/*" /> -->
+        </p>
+        <p>
+          <lable for="wholsesaleprice">Wholesale price</lable><br />
+          <input type="number" name="itemQty" placeholder="unit price" value="" required />
+        </p>
+        <p>
+          <lable for="retailprice">Retail price</lable><br />
+          <input type="number" name="itemPrice" placeholder="item price in the shop" value="" required />
+        </p>
+        <p>
+          <lable for="maximumstocklevel">Maximum stock level</lable><br />
+<!--           <input type="number" name="maximumstocklevel" placeholder="item level when re-ordering" value="" required /> -->
+        </p>
+        <p>
+          <lable for="minimumtocklevel">Maximum stock level</lable><br />
+<!--           <input type="number" name="minimumstocklevel" placeholder="item level when it reaches low" value="" required /> -->
+        </p>
+        <p>
+          <lable for="email">Email</lable><br />
+<!--           <input type="text" name="email" placeholder="" value="" required /> -->
+        </p>
+        <p><input type="submit" value="Add New Item"></p>
+      </form>
+		</main>
+   </body>
+</html>

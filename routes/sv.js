@@ -16,8 +16,6 @@ async function checkAuth(ctx, next) {
 router.use(checkAuth)
 
 router.get('/', async ctx => {
-  
-  
   const items = await new Items(dbName)
 	try {
     const total = await items.total()
@@ -38,9 +36,24 @@ router.get('/', async ctx => {
   }
 })
 
+
+
+router.get('/clear', async ctx => {
+   const items = await new Items(dbName)
+   try{
+     await items.dropCart()
+     ctx.redirect('/')
+   }catch(err){
+    console.log(err.message)
+    console.log("DROP CART ERROR")
+    throw(err)
+   }
+    
+//    await ctx.render('sv', ctx.hbs)
+})
+
 router.get('/add', async ctx => {
    await ctx.render('add', ctx.hbs)
-  
 })
 
 router.post('/', async ctx => {
@@ -64,8 +77,29 @@ router.post('/', async ctx => {
   }
 })
 
-
+router.post('/add', async ctx => {
+	const items = await new Items(dbName)
+	try {
+		// call the functions in the module
+    console.log("ITEM DETAILS")
+    console.log(ctx.request.body)
+    
+		await items.addItem(ctx.request.body)
+		ctx.redirect(`/?msg=new item added`)
+	} catch(err) {
+		ctx.hbs.msg = err.message
+		ctx.hbs.body = ctx.request.body
+		console.log(ctx.hbs)
+    console.log("ERROR IN /ADD POST")
+    console.log(err.message)
+		await ctx.render('/', ctx.hbs)
+	} finally {
+		items.close()
+	}
 })
+
+
+
 // router.post('/add', async ctx => {
 //   console.log('adding a customer')
 //   return ctx.redirect('/sv?=new item added')
