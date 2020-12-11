@@ -3,17 +3,23 @@
 
 <html lang="en">
 	<head>
+   
 		<meta charset="utf-8">
 		<title>SV - Items</title>
 		<meta name="description" content="form to add new books">
 		<meta name="author" content="Mark Tyers">
 		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
 		<script type="module" src="main.js"></script>
+    
+    
 	</head>
 	<body>
-		<header>
+		<header> 
 		<h1>Stock Inventory</h1>
+      
 		<a href="/logout">Log out</a>
+       <a  href="/sv/itemadd" style="float: right;">Items</a>
+         
     </header>
 		{{#if msg}}
  			<aside>
@@ -28,31 +34,32 @@
 				<label for="item">Item ID: </label><br />
 				<input type="number" name="itemID" value="">
 			</p>
-			<p align="left">
+       <p align="left">
         <input type="submit" value="Submit"/>
-      </p>
-      <p align="right">
-        <input type="submit" value="Next"/>
-        <input type="submit" value="Back"/>
       </p>
 		</form> 
       
-       <a href="/sv/clear">Clear</a>
+       <a href="/sv/clear" style="float: right;">Clear</a>
+       <a href="/sv/checkout" style="float: right;">Checkout</a>
       
       <div>
+       
         <p>SHOPPING LIST : </p> 
 <table>
     {{#each all}}
       <tr>
-        <td> {{this.name}}</td>
-        <td> {{this.price}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.price}}</td>
         <td>{{this.qty}}</td>
+        
        </tr> 
     {{/each}}
 </table>  
-     <p>Total : {{total}}</p>
+     <p>Total : &#163;{{total}}</p>
       </div>
+      
 		</main>
-        <a  href="/sv/add">Add Items</a>
+        
+       
     </body>
 </html>

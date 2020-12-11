@@ -11,54 +11,56 @@
 		<script type="module" src="main.js"></script>
 	</head>
 	<body>
+    
 		<header>
-		<h1>Add New Items</h1>
+		<h1>Add New Item</h1>
 		<a href="/logout">Log out</a>
+      <a  href="/" >Home</a>
 		</header>
 		{{#if msg}}
  			<aside>
 				<p class="msg">{{msg}}</p>
 			</aside>
 		{{/if}}
+      
 		<main>
       <form method="post" action="/sv/add" enctype="multipart/form-data">
         <p>
-          <lable for="eannumber">EAN number</lable><br />
+          <label for="eannumber">EAN number</label><br />
 <!--           <input type="number" name="itemid" placeholder="barcode" value="" autofocus required /> -->
         </p>
         <p>
-          <lable for="name">Name</lable><br />
-          <input type="text" name="itemName" placeholder="item name" value="" required />
+          <label for="name">Name</label><br />
+          <input type="text" name="itemName" placeholder="item name" value="" required >
         </p>
         <p>
-          <lable for="product">Product Description</lable><br />
-<!--           <input type="text" name="product" placeholder="product description" value="" required /> -->
+          <label for="description">Product Description</label><br />
+          <input type="text" name="description" placeholder="product description" value="" required />
         </p>
-        <p>
-          <lable for="avatar">Product picture</lable><br />
-<!--           <input type="text" name="avatar" accept="image/*" /> -->
+       
+         <p>
+           <label for="avatar">Product picture</label><br />
+           <input type="file" name="avatar" accept="image/" />
         </p>
+        
         <p>
-          <lable for="wholsesaleprice">Wholesale price</lable><br />
+          <label for="wholsesaleprice">Wholesale price</label><br />
           <input type="number" name="itemQty" placeholder="unit price" value="" required />
         </p>
         <p>
-          <lable for="retailprice">Retail price</lable><br />
+          <label for="retailprice">Retail price</label><br />
           <input type="number" name="itemPrice" placeholder="item price in the shop" value="" required />
         </p>
         <p>
-          <lable for="maximumstocklevel">Maximum stock level</lable><br />
+          <label for="maximumstocklevel">Maximum stock level</label><br />
 <!--           <input type="number" name="maximumstocklevel" placeholder="item level when re-ordering" value="" required /> -->
         </p>
         <p>
-          <lable for="minimumtocklevel">Maximum stock level</lable><br />
+          <label for="minimumtocklevel">Maximum stock level</label><br />
 <!--           <input type="number" name="minimumstocklevel" placeholder="item level when it reaches low" value="" required /> -->
         </p>
-        <p>
-          <lable for="email">Email</lable><br />
-<!--           <input type="text" name="email" placeholder="" value="" required /> -->
-        </p>
-        <p><input type="submit" value="Add New Item"></p>
+        
+        <p><input type="submit" value="Add"></p>
       </form>
 		</main>
    </body>

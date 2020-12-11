@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<header>
-		<h1>Items</h1>
+		<h1>Summary Screen</h1>
 		<a href="/logout">Log out</a>
 		</header>
 		{{#if msg}}
@@ -21,18 +21,23 @@
 			</aside>
 		{{/if}}
 		<main>
-    <table>
-    <tr><th>Name</th><th>Price</th><th>Photo</th><th>Qty</th></tr>
+   
+    <table class="center">
+            <tr><th>Name</th><th>Price</th><th>Qty</th></tr>
     {{#each all}}
       <tr>
         <td>{{this.name}}</td>
         <td>{{this.price}}</td>
-        <td><img src="avatars/{{this.photo}}" /></td>
+<!--         <td><img src="images/{{this.photo}}" /></td> -->
         <td>{{this.qty}}</td>
        </tr> 
     {{/each}}
-</table>  
+      <p>Total : &#163;{{total}}</p>
+</table> 
+       
+      <a href="/sv/buy">Buy Now</a>
+      <a href="/sv">Cancel</a>
+    
 		</main>
-    <a class="add" herf="/sv/add">Add Item</a>
    </body>
 </html>

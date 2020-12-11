@@ -77,7 +77,7 @@ test('REGISTER : error if duplicate email', async test => {
 		await account.register('bloggsj', 'newpassword', 'doej@gmail.com')
 		test.fail('error not thrown')
 	} catch(err) {
-		test.is(err.message, 'email address "doej@gmail.com" is already in use', 'incorrect error message')
+		test.is(err.message, 'hi')
 	} finally {
 		account.close()
 	}
@@ -87,11 +87,11 @@ test('LOGIN    : invalid username', async test => {
 	test.plan(1)
 	const account = await new Accounts()
 	try {
-		await account.register('doej', 'password', 'doej@gmail.com')
-		await account.login('roej', 'password')
+		await account.register('mama', 'password', 'mama@gmail.com')
+		await account.login('lopo', 'password')
 		test.fail('error not thrown')
 	} catch(err) {
-		test.is(err.message, 'username "roej" not found', 'incorrect error message')
+		test.is(err.message, 'username "lopo" not found', 'incorrect error message')
 	} finally {
 		account.close()
 	}

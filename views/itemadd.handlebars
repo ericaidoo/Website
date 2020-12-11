@@ -1,0 +1,44 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SV - Items</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="{{host}}/style.css" type="text/css" rel="stylesheet" />
+		<script type="module" src="main.js"></script>
+	</head>
+	<body>
+		<header>
+		<h1>Items</h1>
+      
+		<a href="/logout">Log out</a>
+      <a  href="/" >Home</a>
+		</header>
+		{{#if msg}}
+ 			<aside>
+				<p class="msg">{{msg}}</p>
+			</aside>
+		{{/if}}
+		<main>
+   
+    <table class="center">
+    <tr>
+        <th>Name</th><th>Price</th><th>Photo</th><th>Qty</th></tr>
+      
+    {{#each all}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.price}}</td>
+        <td><img src="{{host}}/avatars/{{this.filename}}" /></td>
+        <td>{{this.qty}}</td>
+       </tr> 
+    {{/each}}
+</table> 
+    <a  href="/sv/add" style="float: right;">Add Items</a>
+   
+		</main>
+   </body>
+</html>

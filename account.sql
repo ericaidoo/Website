@@ -15,13 +15,6 @@
 --      price INTEGER
 -- );
 
-                 
-INSERT INTO items(name, price, qty)
-  VALUES("nokia", 799,200);
-INSERT INTO items(name, price, qty)
-  VALUES("samsung s20",899, 543);
-INSERT INTO items(name, price, qty)
-  VALUES("iphone", 999,865);
-  
-  
+
+   
 

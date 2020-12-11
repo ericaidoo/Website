@@ -15,7 +15,7 @@ class Accounts {
    * Create an account object
    * @param {String} [dbName=":memory:"] - The name of the database file to use.
    */
-	constructor(dbName = ':account.sql:') {
+	constructor(dbName = ':memory:') {
 		return (async() => {
 			this.db = await sqlite.open(dbName)
 			// we need this table to store the user accounts
@@ -40,9 +40,13 @@ class Accounts {
 		let sql = `SELECT COUNT(id) as records FROM users WHERE user="${user}";`
 		const data = await this.db.get(sql)
 		if(data.records !== 0) throw new Error(`username "${user}" already in use`)
+
+
 		sql = `SELECT COUNT(id) as records FROM users WHERE email="${email}";`
 		const emails = await this.db.get(sql)
-		if(emails.records !== 0) throw new Error(`email address "${email}" is already in use`)
+		if(emails.records !== 0) throw new Error('hi')
+
+
 		pass = await bcrypt.hash(pass, saltRounds)
 		sql = `INSERT INTO users(user, pass, email) VALUES("${user}", "${pass}", "${email}")`
 		await this.db.run(sql)
@@ -58,13 +62,16 @@ class Accounts {
 	async login(username, password) {
 		let sql = `SELECT count(id) AS count FROM users WHERE user="${username}";`
 		const records = await this.db.get(sql)
+
 		if(!records.count) throw new Error(`username "${username}" not found`)
 		sql = `SELECT id, pass FROM users WHERE user = "${username}";`
 		const record = await this.db.get(sql)
+
 		const valid = await bcrypt.compare(password, record.pass)
 		if(valid === false) throw new Error(`invalid password for account "${username}"`)
 		return true
 	}
+
 
 	async close() {
 		await this.db.close()

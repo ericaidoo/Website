@@ -1,8 +1,11 @@
 
 body {
-		font-family: Arial, Helvetica, sans-serif;
+  background-image: url("https://www.chrishazemusic.com/wp-content/uploads/2018/02/Website-Background-scaled.jpg");
+		font-family: Helvetica sans-serif;
 		margin: 0;
 	}
+
+}
 
 /* formats the red message boxes */
 aside {
@@ -21,7 +24,9 @@ aside {
 }
 
 header {
-	background-color: #621940;
+  background-image: url("https://image.freepik.com/free-vector/abstract-blend-blue-background_1048-11838.jpg");
+  height: 100vh;
+  background-size: cover;
 	border-bottom: 5px solid grey;
 	height: 8vw;
 }
@@ -58,7 +63,8 @@ header > a {
 	font-size: 1.3vw;
 }
 
-header > img {
+header > img{ 
+  
 	width: 7vw;
 	border-radius: 50%;
 	position: absolute;
@@ -76,10 +82,11 @@ main {
   margin-top: 2em;
   padding: 2em;
   box-sizing:border-box;
-  background-color: #621940;
+  background-image: ;
   color: #f10080;
   
 }
+
 
 article {
 	width: 50vw;
@@ -95,7 +102,7 @@ aside {
 
 main a {
 	color: black;
-	text-decoration: underline;
+	text-decoration: ;
 }
 
 main a:hover {
@@ -148,13 +155,13 @@ legend {
 }
 
 input[type="file"] {
-	display: none;
+/* 	display: none; */
 }
 
 input[type="submit"], header > a, a .custom-file-upload {
-  background-color: grey;
-  border: 2px solid grey;
-  color: white;
+  background-color: #15c42f;
+  border: 2px solid black;
+  color: black;
 	padding: 0.4vw 0.8vw;
   text-align: center;
   text-decoration: none;
@@ -164,14 +171,14 @@ input[type="submit"], header > a, a .custom-file-upload {
 }
 
 input[type="submit"]:hover, header > a:hover, .custom-file-upload:hover {
-  color: grey;
-  background-color: white;
+  color: red;
+  background-color: yellow;
 }
 
 a {
   background-color: #15c42f;
-  border: 2px solid #cefff8;
-  color: white;
+  border: 2px solid black;
+  color: black;
 	padding: 0.4vw 0.8vw;
   text-align: center;
   text-decoration: none;
@@ -237,19 +244,26 @@ dd {
 /* ===== TABLES ===== */
 
 table {
+  margin-left: auto;
+  margin-right: auto;
 	/* border: 1px solid grey; */
 	border-collapse: collapse;
 }
 
 tr:nth-child(odd) {
-	background: #DDD;
+	background-color: #DDD;
+}
+
+ td:hover{
+  background-color: #aa1667;
 }
 
 td, th {
-	/* border: 1px solid grey; */
-	padding: 0.5vw;
-	font-size: 1.5vw;
-  width: 25vw;
+	border: 4px solid black; 
+	padding: 0.3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  width: 15vw;
 }
 
 td:last-child, th:last-child {

@@ -15,11 +15,11 @@ const dbName = 'website.db'
  */
 router.get('/', async ctx => {
 	try {
-    if(ctx.hbs.authorised) {
-      return ctx.redirect('/sv?msg=you are logged in...')
-    } else{
-      return ctx.redirect('/login?msg=you need to log in')
-    }
+		if(ctx.hbs.authorised) {
+			return ctx.redirect('/sv')
+		} else{
+			return ctx.redirect('/login?msg=you need to log in')
+		}
 	} catch(err) {
 		await ctx.render('error', ctx.hbs)
 	}
@@ -79,7 +79,7 @@ router.post('/login', async ctx => {
 })
 
 router.get('/logout', async ctx => {
-   
+
 	ctx.session.authorised = null
 	ctx.redirect('/?msg=you are now logged out')
 })
